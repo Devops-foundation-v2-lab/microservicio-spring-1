@@ -16,7 +16,14 @@ steps:
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
-
+- task: CopyFiles@2
+  displayName: 'Prepare artifact'
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)'
+    contents: |
+        **/build/libs/*.jar
+        **/build/**/*.xml
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
     pathToPublish: '$(Build.ArtifactStagingDirectory)'
