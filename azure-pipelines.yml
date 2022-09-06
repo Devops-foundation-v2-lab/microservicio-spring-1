@@ -31,4 +31,14 @@ steps:
     downloadPath: '$(Pipeline.Workspace)'
   displayName: Descarga Jar
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'devops-foundation'
+    organization: 'devops-foundation-lab-1'
+    scannerMode: 'MSBuild'
+    projectKey: 'devops-foundation-lab_lab-final-devops-foundation'
+    projectName: 'lab-final-devops-foundation'
+
+
+
 
