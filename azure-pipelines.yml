@@ -83,7 +83,7 @@ stages:
     - task: Docker@2
       displayName: Docker push
       inputs:
-        containerRegistry: 'DockerAccount'
+        containerRegistry: 'docker'
         repository: 'dargor980/lab-ms-spring'
         command: 'buildAndPush'
         tags: |
