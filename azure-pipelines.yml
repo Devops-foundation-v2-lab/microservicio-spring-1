@@ -97,12 +97,13 @@ stages:
       inputs:
         kubectlVersion: 'latest'
       displayName: Instalacion Kubectl
+    
     - task: Kubernetes@1
       inputs:
         connectionType: 'Azure Resource Manager'
-        azureSubscriptionEndpoint: 'azurecon'
         azureResourceGroup: 'lab-devops-foundation'
         kubernetesCluster: 'lab-devops-foundation'
+        useClusterAdmin: true
         namespace: 'default'
         command: 'login'
       displayName: 'AKS Login'
