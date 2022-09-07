@@ -57,7 +57,7 @@ stages:
         pollingTimeoutSec: '300'
     - task: sonarcloud-buildbreaker@2
       inputs:
-        SonarCloud: 'devops-foundation'
+        SonarCloud: 'devops-foundation-sonar'
         organization: 'devops-foundation-lab-1'
         
 - stage: Deploy 
