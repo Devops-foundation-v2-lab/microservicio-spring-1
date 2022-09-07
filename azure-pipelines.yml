@@ -49,7 +49,7 @@ stages:
         gradleWrapperFile: 'gradlew'
         tasks: "build jacocoTestReport"
         javaHomeOption: 'JDKVersion'
-        sonarQubeRunAnalysis: false
+        sonarQubeRunAnalysis: true
         sqGradlePluginVersionChoice: 'specify'
         sonarQubeGradlePluginVersion: '3.3'
       displayName: 'Analyze current Branch'
