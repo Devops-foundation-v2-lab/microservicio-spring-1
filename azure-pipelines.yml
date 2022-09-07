@@ -54,14 +54,14 @@ stages:
         sonarQubeGradlePluginVersion: '3.3'
       displayName: 'Analyze current Branch'
       
-    - task: sonarcloud-buildbreaker@2
-      inputs:
-        SonarCloud: 'devops-foundation'
-        organization: 'devops-foundation-lab-1'
     
     - task: SonarCloudPublish@1
       inputs:
         pollingTimeoutSec: '300'
+    - task: sonarcloud-buildbreaker@2
+      inputs:
+        SonarCloud: 'devops-foundation'
+        organization: 'devops-foundation-lab-1'
         
 - stage: Deploy 
   jobs:
