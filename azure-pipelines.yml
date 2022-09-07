@@ -100,7 +100,7 @@ stages:
     - task: Kubernetes@1
       inputs:
         connectionType: 'Azure Resource Manager'
-        azureSubscriptionEndpoint: 'Azure subscription 1(8c026792-ec48-453c-8d33-2b21e1c34b79)'
+        azureSubscriptionEndpoint: 'azurecon'
         azureResourceGroup: 'lab-devops-foundation'
         kubernetesCluster: 'lab-devops-foundation'
         namespace: 'default'
