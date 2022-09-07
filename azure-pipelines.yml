@@ -77,7 +77,7 @@ stages:
 
     - task: Docker@2
       inputs:
-        containerRegistry: 'DockerAccount'
+        containerRegistry: 'docker'
         command: 'login'
       displayName: Docker registry login
     - task: Docker@2
