@@ -1,0 +1,98 @@
+pool:
+  vmImage: ubuntu-latest
+stages:
+- stage: Build 
+  jobs:
+  - job: build
+    displayName: 'Build'
+    steps:
+
+    - task: Gradle@3
+      inputs:
+        gradleWrapperFile: 'gradlew'
+        tasks: 'build'
+        publishJUnitResults: true
+        testResultsFiles: '**/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        sonarQubeRunAnalysis: false
+        spotBugsAnalysis: false
+      displayName: 'Build App'
+
+    - task: CopyFiles@2
+      inputs:
+        sourceFolder: '$(Build.SourcesDirectory)'
+        contents: |
+          **/build/libs/*.jar
+        targetFolder: '$(Build.ArtifactStagingDirectory)'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: '$(Build.ArtifactStagingDirectory)'
+        artifactName: appJar
+        publishLocation: 'Container'
+- stage: Test 
+  jobs:
+  - job: sonar
+    steps:
+    - task: SonarCloudPrepare@1
+      inputs:
+        SonarCloud: 'devops-foundation'
+        organization: 'devops-foundation-lab-1'
+        scannerMode: 'MSBuild'
+        projectKey: 'devops-foundation-lab_lab-final-devops-foundation'
+        projectName: 'lab-final-devops-foundation'
+        extraProperties: |
+          sonar.coverage.jacoco.xmlReportPaths=$(Pipeline.Workspace)/appJar/build/reports/jacoco/test/jacocoTestReport.xml
+    
+    - task: Gradle@3
+      inputs:
+        gradleWrapperFile: 'gradlew'
+        tasks: "build jacocoTestReport"
+        javaHomeOption: 'JDKVersion'
+        sonarQubeRunAnalysis: false
+        sqGradlePluginVersionChoice: 'specify'
+        sonarQubeGradlePluginVersion: '3.3'
+      displayName: 'Analyze current Branch'
+      
+    - task: sonarcloud-buildbreaker@2
+      inputs:
+        SonarCloud: 'devops-foundation'
+        organization: 'devops-foundation-lab-1'
+    
+    - task: SonarCloudPublish@1
+      inputs:
+        pollingTimeoutSec: '300'
+        
+- stage: Deploy 
+  jobs:
+  - job: buildImage
+    steps:
+    - task: DownloadBuildArtifacts@0
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'appJar'
+        downloadPath: '$(Pipeline.Workspace)'
+      displayName: Descarga Jar
+    
+    - script: "mkdir -p build/libs; mv $(Pipeline.Workspace)/appJar/build/libs/ build/; chmod -R 555 build/libs"  
+      displayName:  Se mueve JAR a carpeta raiz
+
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'DockerAccount'
+        command: 'login'
+      displayName: Docker registry login
+    - task: Docker@2
+      displayName: Docker push
+      inputs:
+        containerRegistry: 'DockerAccount'
+        repository: 'dargor980/lab-ms-spring'
+        command: 'push'
+        tags: 'latest'
+    - task: KubectlInstaller@0
+      inputs:
+        kubectlVersion: 'latest'
+      displayName: Instalacion Kubectl
+
+    
