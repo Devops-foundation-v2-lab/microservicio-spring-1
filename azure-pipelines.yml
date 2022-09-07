@@ -1,5 +1,6 @@
 pool:
   vmImage: ubuntu-latest
+  agentPoolName: autohost
 stages:
 - stage: Build 
   jobs:
