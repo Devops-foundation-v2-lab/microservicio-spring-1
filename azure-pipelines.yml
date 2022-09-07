@@ -88,8 +88,11 @@ stages:
       inputs:
         containerRegistry: 'DockerAccount'
         repository: 'dargor980/lab-ms-spring'
-        command: 'push'
-        tags: 'latest'
+        command: 'buildAndPush'
+        tags: |
+          v$(Build.BuildId)
+          latest
+        Dockerfile: '**/Dockerfile'
     - task: KubectlInstaller@0
       inputs:
         kubectlVersion: 'latest'
