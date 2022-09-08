@@ -151,7 +151,7 @@ stages:
       displayName: 'Kubernetes expose'
 
     - script: |
-        ipApp=$(kubectl get services tarea1-app --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+        ipApp=$(kubectl get services lab-devops-foundation --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
         echo $ipApp
         URLApp=http://$ipApp:8080
         echo $URLApp
