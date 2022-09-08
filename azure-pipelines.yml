@@ -115,10 +115,11 @@ stages:
         useClusterAdmin: true
         namespace: 'default'
         command: 'apply'
-        arguments: '-f kubernetes/deployment-app.yml'
+        arguments: '-f ./kubernetes/deployment-app.yml'
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
       displayName: 'Kubernetes apply'
+    
     
     - task: Kubernetes@1
       inputs:
