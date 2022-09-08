@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab-devops-foundation-deploy
+  labels:
+    app: lab-devops-foundation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lab-devops-foundation
+  template:
+    metadata:
+      labels:
+        app: lab-devops-foundation
+    spec:
+      containers:
+      - name: lab-devops-foundation
+      image: dargor980/lab-ms-spring:latest
+      ports:
+      - containerPort: 8080
