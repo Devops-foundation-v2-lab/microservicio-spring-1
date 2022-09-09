@@ -18,5 +18,5 @@ spec:
       - name: lab-devops-foundation
         image: dargor980/lab-ms-spring:latest
         ports:
-        - containerPort: 8085
+        - containerPort: 8080
 
