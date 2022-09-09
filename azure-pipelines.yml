@@ -150,12 +150,10 @@ stages:
         containerRegistryType: 'Azure Container Registry'
       displayName: 'Kubernetes expose'
     
-    - task: Delay@1
-      inputs:
-        delayForMinutes: '0.1'
-      displayName: 'Delay para asignación ip'
+    
     
     - script: |
+        sleep(5)
         ipApp=$(kubectl get services lab-devops-foundation --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
         echo $ipApp
         URLApp=http://$ipApp:8080
