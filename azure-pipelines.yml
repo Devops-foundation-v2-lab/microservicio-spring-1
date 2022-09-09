@@ -1,3 +1,4 @@
+trigger: ['feature-ms-germanContreras-mensaje']
 pool:
   vmImage: ubuntu-latest
 stages:
@@ -144,13 +145,13 @@ stages:
         useClusterAdmin: true
         namespace: 'default'
         command: 'expose'
-        arguments: 'deployment lab-devops-foundation-deploy --type=LoadBalancer --name=lab-devops'
+        arguments: 'deployment lab-devops-foundation-deploy --type=LoadBalancer --name=lab-devops-foundation'
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
       displayName: 'Kubernetes expose'
 
     - script: |
-        ipApp=$(kubectl get services lab-devops --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+        ipApp=$(kubectl get services lab-devops-foundation --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
         echo $ipApp
         URLApp=http://$ipApp:8080
         echo $URLApp
