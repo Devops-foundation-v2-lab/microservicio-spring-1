@@ -121,18 +121,7 @@ stages:
         containerRegistryType: 'Azure Container Registry'
       displayName: 'Kubernetes apply'
     
-    - task: Kubernetes@1
-      inputs:
-        connectionType: 'Azure Resource Manager'
-        azureSubscriptionEndpoint: 'labdevopsfoundation'
-        azureResourceGroup: 'lab-devops-foundation'
-        kubernetesCluster: 'lab-devops-foundation'
-        useClusterAdmin: true
-        namespace: 'default'
-        command: 'delete'
-        arguments: 'services lab-devops-foundation'
-        secretType: 'dockerRegistry'
-        containerRegistryType: 'Azure Container Registry'
+    
     - task: Kubernetes@1
       inputs:
         connectionType: 'Azure Resource Manager'
@@ -142,7 +131,7 @@ stages:
         useClusterAdmin: true
         namespace: 'default'
         command: 'expose'
-        arguments: 'deployment lab-devops-foundation-deploy --type=LoadBalancer --name=lab-devops-foundation-deploy'
+        arguments: 'deployment lab-devops-foundation-deploy --type=LoadBalancer --name=lab-devops-foundation'
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
       displayName: 'Kubernetes expose'
