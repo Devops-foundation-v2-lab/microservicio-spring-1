@@ -132,6 +132,8 @@ stages:
         arguments: 'services lab-devops-foundation'
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
+      continueOnError: true
+      displayName: 'Kubernetes delete'
     
     - task: Kubernetes@1
       inputs:
