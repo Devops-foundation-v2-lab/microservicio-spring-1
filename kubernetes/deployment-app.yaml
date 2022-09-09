@@ -22,7 +22,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: lab-devops-foundation
+  name: lab-devops
 spec:
   type: LoadBalancer
   ports:
