@@ -19,13 +19,4 @@ spec:
         image: dargor980/lab-ms-spring:latest
         ports:
         - containerPort: 8085
-apiVersion: v1
-kind: Service
-metadata:
-  name: lab-devops
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: lab-devops-foundation
+
