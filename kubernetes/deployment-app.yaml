@@ -18,11 +18,11 @@ spec:
       - name: lab-devops-foundation
         image: dargor980/lab-ms-spring:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 8085
 apiVersion: v1
 kind: Service
 metadata:
-  name: loadbalancer
+  name: lab-devops-foundation
 spec:
   type: LoadBalancer
   ports:
