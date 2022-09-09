@@ -133,7 +133,7 @@ stages:
         useClusterAdmin: true
         namespace: 'default'
         command: 'expose'
-        arguments: 'deployment lab-devops-foundation-deploy --type=LoadBalancer --name=lab-devops-foundation'
+        arguments: 'deployment lab-devops-foundation-deploy --type=LoadBalancer --name=lab-devops-foundation-deploy'
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
       displayName: 'Kubernetes expose'
