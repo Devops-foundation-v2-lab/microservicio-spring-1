@@ -98,13 +98,13 @@ stages:
     - task: Kubernetes@1
       inputs:
         connectionType: 'Azure Resource Manager'
-        azureSubscriptionEndpoint: 'lab-devops-foundation'
+        azureSubscriptionEndpoint: 'labdevopsfoundation'
         azureResourceGroup: 'lab-devops-foundation'
         kubernetesCluster: 'lab-devops-foundation'
         useClusterAdmin: true
         namespace: 'default'
         command: 'login'
-      displayName: 'Login con Azure'
+      displayName: 'Login con Azure'  
 
 
     - task: Kubernetes@1
