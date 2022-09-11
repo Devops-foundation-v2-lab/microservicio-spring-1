@@ -145,7 +145,7 @@ stages:
         useClusterAdmin: true
         namespace: 'default'
         command: 'expose'
-        arguments: 'deployment lab-devops-foundation-deploy --type=LoadBalancer --name=ms-spring'
+        arguments: 'deployment lab-devops-foundation-deploy --type=LoadBalancer --name=lab-devops-foundation'
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
       displayName: 'Kubernetes expose'
@@ -154,7 +154,7 @@ stages:
     
     - script: |
         sleep 5
-        ipApp=$(kubectl get services lab-devops-foundation --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+        ipApp=$(kubectl get services lab-devops-foundation --output jsonpath='{.spec.clusterIP}')
         echo $ipApp
         URLApp=http://$ipApp:8080
         echo $URLApp
