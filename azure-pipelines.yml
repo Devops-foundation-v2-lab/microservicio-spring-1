@@ -101,7 +101,7 @@ stages:
         connectionType: 'Azure Resource Manager'
         azureSubscriptionEndpoint: 'labdevopsfoundation'
         azureResourceGroup: 'lab-devops-foundation'
-        kubernetesCluster: 'lab-devops-foundation'
+        kubernetesCluster: 'clusterdevops'
         useClusterAdmin: true
         namespace: 'default'
         command: 'login'
@@ -113,7 +113,7 @@ stages:
         connectionType: 'Azure Resource Manager'
         azureSubscriptionEndpoint: 'labdevopsfoundation'
         azureResourceGroup: 'lab-devops-foundation'
-        kubernetesCluster: 'lab-devops-foundation'
+        kubernetesCluster: 'clusterdevops'
         useClusterAdmin: true
         namespace: 'default'
         command: 'apply'
@@ -126,7 +126,7 @@ stages:
         connectionType: 'Azure Resource Manager'
         azureSubscriptionEndpoint: 'labdevopsfoundation'
         azureResourceGroup: 'lab-devops-foundation'
-        kubernetesCluster: 'lab-devops-foundation'
+        kubernetesCluster: 'clusterdevops'
         useClusterAdmin: true
         namespace: 'default'
         command: 'delete'
@@ -141,7 +141,7 @@ stages:
         connectionType: 'Azure Resource Manager'
         azureSubscriptionEndpoint: 'labdevopsfoundation'
         azureResourceGroup: 'lab-devops-foundation'
-        kubernetesCluster: 'lab-devops-foundation'
+        kubernetesCluster: 'clusterdevops'
         useClusterAdmin: true
         namespace: 'default'
         command: 'expose'
