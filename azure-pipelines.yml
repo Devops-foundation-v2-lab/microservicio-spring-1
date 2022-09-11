@@ -130,7 +130,7 @@ stages:
         useClusterAdmin: true
         namespace: 'default'
         command: 'delete'
-        arguments: 'services lab-devops-foundation'
+        arguments: 'services ms-spring'
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
       continueOnError: true
@@ -145,7 +145,7 @@ stages:
         useClusterAdmin: true
         namespace: 'default'
         command: 'expose'
-        arguments: 'deployment lab-devops-foundation-deploy --type=LoadBalancer --name=lab-devops-foundation'
+        arguments: 'deployment lab-devops-foundation-deploy --type=LoadBalancer --name=ms-spring'
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
       displayName: 'Kubernetes expose'
