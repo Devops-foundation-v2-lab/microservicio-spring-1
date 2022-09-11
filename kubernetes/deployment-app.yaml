@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: lab-devops-foundation-deploy
   labels:
-    app: lab-devops-foundation
+    app: ms-spring
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: lab-devops-foundation
+      app: ms-spring
   template:
     metadata:
       labels:
-        app: lab-devops-foundation
+        app: ms-spring
     spec:
       containers:
-      - name: lab-devops-foundation
+      - name: ms-spring
         image: dargor980/lab-ms-spring:latest
         ports:
         - containerPort: 8080
