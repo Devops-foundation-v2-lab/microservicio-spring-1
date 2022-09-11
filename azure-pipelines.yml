@@ -130,7 +130,7 @@ stages:
         useClusterAdmin: true
         namespace: 'default'
         command: 'delete'
-        arguments: 'services ms-spring'
+        arguments: 'services lab-devops-foundation'
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
       continueOnError: true
